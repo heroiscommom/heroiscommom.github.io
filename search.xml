@@ -4,11 +4,24 @@
   
     
     <entry>
-      <title>测试用例</title>
-      <link href="/2022/11/26/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/"/>
-      <url>/2022/11/26/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/</url>
+      <title>我的第一篇博客</title>
+      <link href="/2022/11/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+      <url>/2022/11/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">a</span> ()&#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello word&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【java学习】jdk的解释和path变量的设置（一）</title>
+      <link href="/2022/11/26/%E3%80%90java%E5%AD%A6%E4%B9%A0%E3%80%91jdk%E7%9A%84%E8%A7%A3%E9%87%8A%E5%92%8Cpath%E5%8F%98%E9%87%8F%E7%9A%84%E8%AE%BE%E7%BD%AE%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+      <url>/2022/11/26/%E3%80%90java%E5%AD%A6%E4%B9%A0%E3%80%91jdk%E7%9A%84%E8%A7%A3%E9%87%8A%E5%92%8Cpath%E5%8F%98%E9%87%8F%E7%9A%84%E8%AE%BE%E7%BD%AE%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="JDK的解释"><a href="#JDK的解释" class="headerlink" title="JDK的解释"></a>JDK的解释</h2><p>JDK 是整个 Java 开发的核心，它包括 Java 运行环境、Java 基础类库和 Java 工具。</p><h2 id="JDK文件"><a href="#JDK文件" class="headerlink" title="JDK文件"></a>JDK文件</h2><p>下载jdk后，bin文件夹会包含javac.exe和java.exe<br><img src="https://img-blog.csdnimg.cn/1fbd6a1db02346d2b9d6f80dd4baa374.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiA5b-157yW56iL,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"><br>javac.exe会把java源文件编译为class文件，而java.exe会把class文件运行。</p><h2 id="java源代码的运行"><a href="#java源代码的运行" class="headerlink" title="java源代码的运行"></a>java源代码的运行</h2><p>而要使用这些运行程序则要在命令窗口实现，而在命令窗口实现代码的编译和运行，则要一层一层的将该文件夹打开，找到如此俩个应用程序（像我的文件夹如此乱，要找到猴年马月），于是在设置path变量后，就直接可以在命令窗口进行编译和运行。</p><h2 id="path变量的配置"><a href="#path变量的配置" class="headerlink" title="path变量的配置"></a>path变量的配置</h2><p><img src="https://img-blog.csdnimg.cn/08f0cecd4cf0493c813c28bde38c3b16.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiA5b-157yW56iL,size_13,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="首先在我的电脑打开属性"><br>首先在我的电脑打开属性<br><img src="https://img-blog.csdnimg.cn/3a44b9f6c04b4b4db766b707e2de36d0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiA5b-157yW56iL,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"><br>选择高级系统设置后，在环境变量中新建<br><img src="https://img-blog.csdnimg.cn/84ef7ee3a11149fd931337f04bf7fdad.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiA5b-157yW56iL,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"><br>变量名可以写为</p><blockquote><p>JAVA_HOME</p></blockquote><p>变量值可以浏览目录选择你所装JDK那个文件夹<br><img src="https://img-blog.csdnimg.cn/89ac9776cbf842358ea0f748fd4a7b56.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5LiA5b-157yW56iL,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><p>在系统设置选择path变量后，新建一个新的变量</p><blockquote><p>%JAVA_HOME%\bin</p></blockquote><p>然后将其上移到顶端，如此path变量就设置完成了<br><img src="https://img-blog.csdnimg.cn/44ebd644ec4b462eb04af7099a491fb7.png#pic_center" alt="在这里插入图片描述"></p><p>如此便可以直接在命令窗口编译和运行程序了。<br>在迷茫摆烂一段时间后，重新将学习这件事提上了日程，希望和大家一起进步，共同努力，一起学习！！！！！</p>]]></content>
       
       
       
