@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Java学习】使用ArrayList集合模拟斗地主的实现＜一＞（五） | AWei的博客</title><meta name="author" content="AWei"><meta name="copyright" content="AWei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="@TOC  前言🚀感谢大家一直以来对我的相信和支持，以后的我一定会产出更为高质量的博客的！&#x3D;&#x3D;现在让我们一起学习如何实现模拟斗地主的操作吧！&#x3D;&#x3D;   一，模拟斗地主效果展示一想到斗地主，大家脑海中一定会浮现出🔥花花绿绿🔥的页面：，何况我们马上要模拟斗地主的实现，但是身为&#x3D;&#x3D;初学者&#x3D;&#x3D;，要开始面对idea的控制栏了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Java学习】使用ArrayList集合模拟斗地主的实现＜一＞（五）">
+<meta property="og:url" content="https://heroiscommom.github.io/2022/11/26/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E4%BD%BF%E7%94%A8ArrayList%E9%9B%86%E5%90%88%E6%A8%A1%E6%8B%9F%E6%96%97%E5%9C%B0%E4%B8%BB%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9C%E4%B8%80%EF%BC%9E%EF%BC%88%E4%BA%94%EF%BC%89/index.html">
+<meta property="og:site_name" content="AWei的博客">
+<meta property="og:description" content="@TOC  前言🚀感谢大家一直以来对我的相信和支持，以后的我一定会产出更为高质量的博客的！&#x3D;&#x3D;现在让我们一起学习如何实现模拟斗地主的操作吧！&#x3D;&#x3D;   一，模拟斗地主效果展示一想到斗地主，大家脑海中一定会浮现出🔥花花绿绿🔥的页面：，何况我们马上要模拟斗地主的实现，但是身为&#x3D;&#x3D;初学者&#x3D;&#x3D;，要开始面对idea的控制栏了">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-26T08:07:51.000Z">
+<meta property="article:modified_time" content="2022-11-26T08:08:07.804Z">
+<meta property="article:author" content="AWei">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://heroiscommom.github.io/2022/11/26/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E4%BD%BF%E7%94%A8ArrayList%E9%9B%86%E5%90%88%E6%A8%A1%E6%8B%9F%E6%96%97%E5%9C%B0%E4%B8%BB%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9C%E4%B8%80%EF%BC%9E%EF%BC%88%E4%BA%94%EF%BC%89/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Java学习】使用ArrayList集合模拟斗地主的实现＜一＞（五）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-26 16:08:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">AWei的博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Java学习】使用ArrayList集合模拟斗地主的实现＜一＞（五）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-26T08:07:51.000Z" title="发表于 2022-11-26 16:07:51">2022-11-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-26T08:08:07.804Z" title="更新于 2022-11-26 16:08:07">2022-11-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【Java学习】使用ArrayList集合模拟斗地主的实现＜一＞（五）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>@<a href="%E7%9B%AE%E5%BD%95">TOC</a></p>
+<blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>🚀感谢大家一直以来对我的相信和支持，以后的我一定会产出更为高质量的博客的！&#x3D;&#x3D;现在让我们一起学习如何实现模拟斗地主的操作吧！&#x3D;&#x3D;</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/6f7f7fbcd995458d88ae159a3fe285ae.png#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="一，模拟斗地主效果展示"><a href="#一，模拟斗地主效果展示" class="headerlink" title="一，模拟斗地主效果展示"></a>一，模拟斗地主效果展示</h2><p>一想到斗地主，大家脑海中一定会浮现出🔥<font color="gree">花花绿绿</font>🔥的页面：，何况我们马上要模拟斗地主的实现，但是身为&#x3D;&#x3D;初学者&#x3D;&#x3D;，要开始面对idea的控制栏了(￣_,￣ )<br>让我们先来观察一下每个人的牌的好坏（x_x；）（bushi &#x3D;&#x3D;ᕕ( ᐛ )ᕗ&#x3D;&#x3D; ）</p>
+<p><img src="https://img-blog.csdnimg.cn/7d909a6d61874c36b138856a365858d7.png#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="二，模拟斗地主实现前准备"><a href="#二，模拟斗地主实现前准备" class="headerlink" title="二，模拟斗地主实现前准备"></a>二，模拟斗地主实现前准备</h2><p>要实现上图模式，首先要<font color="red">克服</font>如此三个问题：</p>
+<blockquote>
+<p><strong>1，如何让四个字符与数字相匹配</strong><br><strong>2，如何把牌打乱</strong><br><strong>3，如何把牌分为三份并给与三个人</strong></p>
+</blockquote>
+<p><font color="red"><strong>如何解决：</strong></p>
+<ol>
+<li>我们首先可以创建字符串集合</li>
+<li>然后使用<strong>ArrayList集合</strong>来解决第一个匹配问题</li>
+</ol>
+<blockquote>
+<p>由于**<font color="red">ArrayList的特性</font>**<br>我们可以&#x3D;&#x3D;遍历集合把字符和数字拼接到一起放入集合中&#x3D;&#x3D;</p>
+</blockquote>
+<ol start="3">
+<li>为了解决第二个问题，我们就要引入Collections类</li>
+</ol>
+<blockquote>
+<p><font color="red"><strong>Collection类是针对集合操作的工具类</strong><br><strong>Collections的使用方法如下：</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Collections的使用方法：</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T <span class="keyword">extends</span> <span class="title class_">Comparable</span> &lt;?<span class="built_in">super</span> T&gt;&gt; <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(List&lt;T&gt;list)</span></span><br><span class="line"><span class="comment">//将指定的列表按升序排列</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">reverse</span><span class="params">(List&lt;?&gt;list)</span></span><br><span class="line"><span class="comment">//翻转指定列表中元素的顺序</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">shuffle</span><span class="params">(List&lt;?&gt;list)</span></span><br><span class="line"><span class="comment">//使用默认随机源，随机排列指定列表</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>为了解决第三个问题，我们要创建多个&#x3D;&#x3D;不同集合&#x3D;&#x3D;，然后分别给集合添加拼接到一起的元素</li>
+</ol>
+<p>有了如此解决方法，我们就可以开始着手实现&#x3D;&#x3D;项目的搭建了&#x3D;&#x3D;！(´ｰ∀ｰ&#96;)<br><img src="https://img-blog.csdnimg.cn/3e49b834afcd4072a84469a858773820.gif#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="三，模拟斗地主的实现"><a href="#三，模拟斗地主的实现" class="headerlink" title="三，模拟斗地主的实现"></a>三，模拟斗地主的实现</h2><p>直接使用<strong>ArrayList</strong>实现问题的解决方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PlayPoker</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        ArrayList&lt;String&gt; Poker = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line">        <span class="comment">//创建Poker集合用来存放拼接好的字符</span></span><br><span class="line">        String[] colors = &#123;<span class="string">&quot;♥&quot;</span>, <span class="string">&quot;♣&quot;</span>, <span class="string">&quot;♦&quot;</span>, <span class="string">&quot;♠&quot;</span>&#125;;<span class="comment">//字符串实现花色</span></span><br><span class="line">        String[] numbers = &#123;<span class="string">&quot;3&quot;</span>, <span class="string">&quot;4&quot;</span>, <span class="string">&quot;5&quot;</span>, <span class="string">&quot;6&quot;</span>, <span class="string">&quot;7&quot;</span>, <span class="string">&quot;8&quot;</span>, <span class="string">&quot;9&quot;</span>, <span class="string">&quot;10&quot;</span>, <span class="string">&quot;J&quot;</span>, <span class="string">&quot;Q&quot;</span>, <span class="string">&quot;K&quot;</span>, <span class="string">&quot;A&quot;</span>, <span class="string">&quot;2&quot;</span>&#125;;<span class="comment">//字符串实现数字</span></span><br><span class="line">        <span class="keyword">for</span> (String color : colors) &#123;</span><br><span class="line">            <span class="keyword">for</span> (String number : numbers) &#123;</span><br><span class="line">            <span class="comment">//使用嵌套循环让字符和数字拼接到一起放入集合中</span></span><br><span class="line">                Poker.add(color + number);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Poker.add(<span class="string">&quot;大王&quot;</span>);</span><br><span class="line">        Poker.add(<span class="string">&quot;小王&quot;</span>);</span><br><span class="line">        Collections.shuffle(Poker);<span class="comment">//使用默认随机源，随机排列指定列表</span></span><br><span class="line">        </span><br><span class="line">        ArrayList&lt;String&gt; zsarray = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();<span class="comment">//张三</span></span><br><span class="line">        ArrayList&lt;String&gt; lsarray = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();<span class="comment">//李四</span></span><br><span class="line">        ArrayList&lt;String&gt; wwarray = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();<span class="comment">//王五</span></span><br><span class="line">        ArrayList&lt;String&gt; dparray = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();<span class="comment">//底牌</span></span><br><span class="line">		<span class="comment">//分别创建各自的集合</span></span><br><span class="line">		</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; Poker.size(); i++) &#123;</span><br><span class="line">        <span class="comment">//循环遍历后分别放入各自的集合</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">pokers</span> <span class="operator">=</span> Poker.get(i);</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= Poker.size() - <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="comment">//底牌的判断方法</span></span><br><span class="line">                dparray.add(pokers);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                zsarray.add(pokers);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">2</span>) &#123;</span><br><span class="line">                lsarray.add(pokers);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                wwarray.add(pokers);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//因为每个人的查看牌的方式相同，定义一个方法来实现看牌</span></span><br><span class="line">        lookpoker(<span class="string">&quot;张三&quot;</span>, zsarray);</span><br><span class="line">        lookpoker(<span class="string">&quot;李四&quot;</span>, lsarray);</span><br><span class="line">        lookpoker(<span class="string">&quot;王五&quot;</span>, wwarray);</span><br><span class="line">        lookpoker(<span class="string">&quot;底牌&quot;</span>, dparray);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">lookpoker</span><span class="params">(String name, ArrayList&lt;String&gt; Pokers)</span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;的牌是&quot;</span> + Pokers);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="四，知识点总结"><a href="#四，知识点总结" class="headerlink" title="四，知识点总结"></a>四，知识点总结</h2><h3 id="Collection类"><a href="#Collection类" class="headerlink" title="Collection类"></a>Collection类</h3><p><em><strong>Collection类</strong></em>是针对集合操作的工具类<br><font color="green">使用方法：<br>1，<font color="red">public static &lt;T extends Comparable <?super T>> void sort(List<T>list)</font>：<font color="blue">将指定的列表按升序排列</font>
+2，<font color="red">public static void reverse(List<?>list)</font>：<font color="blue">翻转指定列表中元素的顺序</font><br>3，<font color="red">public static void shuffle(List&lt;?&gt;list)</font>：<font color="blue">使用默认随机源，随机排列指定列表</font></p>
+<blockquote>
+<p>各位大佬们，如果发现什么不对的地方，需要修改的地方，还请在评论区指出。<br>一起学习，共同进步！(￣▽￣)～■干杯□～(￣▽￣) </p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/b87be68360d74d08ab8586e67a0f4cfd.png#pic_center" alt="在这里插入图片描述"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://heroiscommom.github.io">AWei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://heroiscommom.github.io/2022/11/26/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E4%BD%BF%E7%94%A8ArrayList%E9%9B%86%E5%90%88%E6%A8%A1%E6%8B%9F%E6%96%97%E5%9C%B0%E4%B8%BB%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9C%E4%B8%80%EF%BC%9E%EF%BC%88%E4%BA%94%EF%BC%89/">https://heroiscommom.github.io/2022/11/26/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E4%BD%BF%E7%94%A8ArrayList%E9%9B%86%E5%90%88%E6%A8%A1%E6%8B%9F%E6%96%97%E5%9C%B0%E4%B8%BB%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9C%E4%B8%80%EF%BC%9E%EF%BC%88%E4%BA%94%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://heroiscommom.github.io" target="_blank">AWei的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/./img/weixin.jpg" target="_blank"><img class="post-qr-code-img" src="/./img/weixin.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/./img/zhifubao.jpg" target="_blank"><img class="post-qr-code-img" src="/./img/zhifubao.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/26/%EF%BC%9CMySQL%E5%AD%A6%E4%B9%A0%EF%BC%9Emysql%E4%B8%8B%E8%BD%BD%EF%BC%8Cpath%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8Cmysql%E7%9A%84%E6%B3%A8%E5%86%8C%E5%90%AF%E5%8A%A8%EF%BC%88%E4%B8%80%EF%BC%89/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">＜MySQL学习＞mysql下载，path环境变量的配置和mysql的注册启动（一）</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/26/%E3%80%90java%E5%AD%A6%E4%B9%A0%E3%80%91%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【java学习】学生管理系统项目实现（四）</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">AWei</div><div class="author-info__description">测试</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/heroiscommom?tab=projects" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:123weiqihao@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%EF%BC%8C%E6%A8%A1%E6%8B%9F%E6%96%97%E5%9C%B0%E4%B8%BB%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">一，模拟斗地主效果展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%EF%BC%8C%E6%A8%A1%E6%8B%9F%E6%96%97%E5%9C%B0%E4%B8%BB%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-number">3.</span> <span class="toc-text">二，模拟斗地主实现前准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%EF%BC%8C%E6%A8%A1%E6%8B%9F%E6%96%97%E5%9C%B0%E4%B8%BB%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">三，模拟斗地主的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%EF%BC%8C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">四，知识点总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Collection%E7%B1%BB"><span class="toc-number">5.1.</span> <span class="toc-text">Collection类</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/26/%EF%BC%9CMySQL%E5%AD%A6%E4%B9%A0%EF%BC%9Emysql%E4%B8%8B%E8%BD%BD%EF%BC%8Cpath%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8Cmysql%E7%9A%84%E6%B3%A8%E5%86%8C%E5%90%AF%E5%8A%A8%EF%BC%88%E4%B8%80%EF%BC%89/" title="＜MySQL学习＞mysql下载，path环境变量的配置和mysql的注册启动（一）"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="＜MySQL学习＞mysql下载，path环境变量的配置和mysql的注册启动（一）"/></a><div class="content"><a class="title" href="/2022/11/26/%EF%BC%9CMySQL%E5%AD%A6%E4%B9%A0%EF%BC%9Emysql%E4%B8%8B%E8%BD%BD%EF%BC%8Cpath%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8Cmysql%E7%9A%84%E6%B3%A8%E5%86%8C%E5%90%AF%E5%8A%A8%EF%BC%88%E4%B8%80%EF%BC%89/" title="＜MySQL学习＞mysql下载，path环境变量的配置和mysql的注册启动（一）">＜MySQL学习＞mysql下载，path环境变量的配置和mysql的注册启动（一）</a><time datetime="2022-11-26T08:08:42.000Z" title="发表于 2022-11-26 16:08:42">2022-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/26/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E4%BD%BF%E7%94%A8ArrayList%E9%9B%86%E5%90%88%E6%A8%A1%E6%8B%9F%E6%96%97%E5%9C%B0%E4%B8%BB%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9C%E4%B8%80%EF%BC%9E%EF%BC%88%E4%BA%94%EF%BC%89/" title="【Java学习】使用ArrayList集合模拟斗地主的实现＜一＞（五）"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Java学习】使用ArrayList集合模拟斗地主的实现＜一＞（五）"/></a><div class="content"><a class="title" href="/2022/11/26/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E4%BD%BF%E7%94%A8ArrayList%E9%9B%86%E5%90%88%E6%A8%A1%E6%8B%9F%E6%96%97%E5%9C%B0%E4%B8%BB%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9C%E4%B8%80%EF%BC%9E%EF%BC%88%E4%BA%94%EF%BC%89/" title="【Java学习】使用ArrayList集合模拟斗地主的实现＜一＞（五）">【Java学习】使用ArrayList集合模拟斗地主的实现＜一＞（五）</a><time datetime="2022-11-26T08:07:51.000Z" title="发表于 2022-11-26 16:07:51">2022-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/26/%E3%80%90java%E5%AD%A6%E4%B9%A0%E3%80%91%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%9B%9B%EF%BC%89/" title="【java学习】学生管理系统项目实现（四）"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【java学习】学生管理系统项目实现（四）"/></a><div class="content"><a class="title" href="/2022/11/26/%E3%80%90java%E5%AD%A6%E4%B9%A0%E3%80%91%E5%AD%A6%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%9B%9B%EF%BC%89/" title="【java学习】学生管理系统项目实现（四）">【java学习】学生管理系统项目实现（四）</a><time datetime="2022-11-26T08:07:10.000Z" title="发表于 2022-11-26 16:07:10">2022-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/26/%E3%80%90java%E5%AD%A6%E4%B9%A0%E3%80%91%E7%8C%9C%E6%95%B0%E5%AD%97%E5%B0%8F%E6%B8%B8%E6%88%8F%EF%BC%88%E4%B8%89%EF%BC%89/" title="【java学习】猜数字小游戏（三）"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【java学习】猜数字小游戏（三）"/></a><div class="content"><a class="title" href="/2022/11/26/%E3%80%90java%E5%AD%A6%E4%B9%A0%E3%80%91%E7%8C%9C%E6%95%B0%E5%AD%97%E5%B0%8F%E6%B8%B8%E6%88%8F%EF%BC%88%E4%B8%89%EF%BC%89/" title="【java学习】猜数字小游戏（三）">【java学习】猜数字小游戏（三）</a><time datetime="2022-11-26T08:05:21.000Z" title="发表于 2022-11-26 16:05:21">2022-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/26/%E3%80%90JAVA%E5%AD%A6%E4%B9%A0%E3%80%91%E6%80%BB%E7%BB%93%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" title="【JAVA学习】总结数据类型（二）"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【JAVA学习】总结数据类型（二）"/></a><div class="content"><a class="title" href="/2022/11/26/%E3%80%90JAVA%E5%AD%A6%E4%B9%A0%E3%80%91%E6%80%BB%E7%BB%93%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" title="【JAVA学习】总结数据类型（二）">【JAVA学习】总结数据类型（二）</a><time datetime="2022-11-26T08:04:18.000Z" title="发表于 2022-11-26 16:04:18">2022-11-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By AWei</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="7422861869" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrcType="-1"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
